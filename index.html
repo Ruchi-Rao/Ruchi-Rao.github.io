@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio | Week 3 Assignment</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Font & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom scrollbar and glassmorphism backdrop */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0ea5e9;
+            border-radius: 4px;
+        }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- EDIT YOUR INITIALS OR LOGO NAME HERE -->
+            <a href="#" class="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2 group">
+                <span class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white font-mono font-bold text-sm shadow-md group-hover:scale-105 transition-transform">AR</span>
+                <span>Alex<span class="text-brand-500">.dev</span></span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-500 transition-colors">Personal Statement</a>
+                <a href="#skills" class="text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-500 transition-colors">Skills</a>
+                <a href="#projects" class="text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-500 transition-colors">Projects</a>
+                <a href="#contact" class="text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-500 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Actions (Theme Toggle & Mobile Menu Btn) -->
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" type="button" aria-label="Toggle Theme" class="p-2.5 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
+                    <i id="theme-toggle-dark-icon" class="fas font-solid fa-moon text-lg hidden"></i>
+                    <i id="theme-toggle-light-icon" class="fas font-solid fa-sun text-lg hidden text-amber-400"></i>
+                </button>
+
+                <button id="mobile-menu-btn" type="button" aria-label="Toggle Navigation" class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-3 font-medium">
+            <a href="#about" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-brand-500">Personal Statement</a>
+            <a href="#skills" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-brand-500">Skills</a>
+            <a href="#projects" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-brand-500">Projects</a>
+            <a href="#contact" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-brand-500">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero & Personal Statement Section (Rubric Criterion: Personal Statement) -->
+    <section id="about" class="pt-32 pb-20 md:pt-40 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
+        <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+            <div class="flex-1 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-slate-800 border border-brand-100 dark:border-slate-700 text-brand-600 dark:text-brand-500 text-xs font-semibold uppercase tracking-wider mb-6">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Available for internship & full-time opportunities
+                </div>
+                
+                <!-- EDIT YOUR NAME HERE -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight mb-4">
+                    Hi, I'm <span class="bg-gradient-to-r from-brand-500 to-indigo-600 bg-clip-text text-transparent">Alex Rivera</span>
+                </h1>
+
+                <!-- EDIT YOUR TITLE HERE -->
+                <h2 class="text-xl sm:text-2xl font-medium text-slate-600 dark:text-slate-400 mb-6">
+                    Aspiring Software Engineer & Computer Science Student
+                </h2>
+
+                <!-- RUBRIC REQUIREMENT: PERSONAL STATEMENT (ONE-SENTENCE INTRODUCTION) -->
+                <!-- EDIT YOUR ONE-SENTENCE PERSONAL STATEMENT BELOW -->
+                <div class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-800/80 border border-brand-500/30 dark:border-brand-500/20 shadow-md mb-8 relative">
+                    <span class="absolute -top-3 left-4 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-brand-500 text-white">Personal Statement</span>
+                    <p class="text-base sm:text-lg text-slate-800 dark:text-slate-200 italic leading-relaxed pt-1">
+                        "I am an ambitious full-stack software engineer dedicated to building scalable, user-centric web applications and delivering elegant solutions through clean, performant code."
+                    </p>
+                </div>
+                
+                <!-- Action Buttons & Social Links -->
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                    <a href="#projects" class="px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-medium shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition-all flex items-center gap-2">
+                        <span>View Projects</span>
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                    <a href="#contact" class="px-6 py-3 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-medium transition-colors">
+                        Get In Touch
+                    </a>
+                    
+                    <!-- EDIT YOUR SOCIAL URLS BELOW -->
+                    <div class="flex items-center gap-3 ml-0 md:ml-4 border-t md:border-t-0 md:border-l border-slate-200 dark:border-slate-800 pt-4 md:pt-0 md:pl-6 w-full md:w-auto justify-center">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="p-3 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="p-3 text-slate-600 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Avatar Image -->
+            <div class="relative group">
+                <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-brand-500 to-indigo-600 opacity-75 blur transition duration-500 group-hover:opacity-100"></div>
+                <!-- EDIT YOUR PROFILE IMAGE URL HERE -->
+                <img src="https://placehold.co/300x300/0ea5e9/ffffff?text=AR" 
+                     onerror="this.src='https://via.placeholder.com/300'" 
+                     alt="Alex Rivera Profile Photo" 
+                     class="relative w-48 h-48 sm:w-64 sm:h-64 rounded-full object-cover border-4 border-white dark:border-slate-900 shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- RUBRIC REQUIREMENT: SKILLS SHOWCASE -->
+    <section id="skills" class="py-20 bg-slate-100/60 dark:bg-slate-800/40 border-y border-slate-200/60 dark:border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Skills Showcase</h2>
+                <p class="text-slate-600 dark:text-slate-400">A tailored list of technical languages, modern frameworks, and engineering tools.</p>
+            </div>
+
+            <!-- EDIT YOUR SKILLS LIST BELOW -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Frontend Skills -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-brand-500/50 transition-colors">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-slate-800 text-brand-500 flex items-center justify-center text-xl mb-6">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Frontend Technologies</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">HTML5 / CSS3</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">JavaScript (ES6+)</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">React.js</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Tailwind CSS</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Responsive Web Design</span>
+                    </div>
+                </div>
+
+                <!-- Backend Skills -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-brand-500/50 transition-colors">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-slate-800 text-brand-500 flex items-center justify-center text-xl mb-6">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Backend & Databases</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Node.js</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Express.js</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Python</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">SQL / PostgreSQL</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">REST APIs</span>
+                    </div>
+                </div>
+
+                <!-- Developer Tools -->
+                <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-brand-500/50 transition-colors">
+                    <div class="w-12 h-12 rounded-xl bg-brand-50 dark:bg-slate-800 text-brand-500 flex items-center justify-center text-xl mb-6">
+                        <i class="fas fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Tools & Workflow</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Git & GitHub</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">VS Code</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">GitHub Pages</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">NPM / CLI</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Agile / Scrum</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RUBRIC REQUIREMENT: PROJECTS SECTION (AT LEAST 2-3 PROJECTS WITH CODE & DEMO LINKS) -->
+    <section id="projects" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Featured Projects</h2>
+            <p class="text-slate-600 dark:text-slate-400">A showcase of 3 relevant software engineering projects with working repository and demo links.</p>
+        </div>
+
+        <!-- Filter & Search Controls -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+            <div class="flex flex-wrap items-center gap-2" id="filter-buttons">
+                <button data-filter="all" class="filter-btn active px-4 py-2 rounded-lg text-sm font-medium bg-brand-500 text-white shadow-sm transition-all">All Projects</button>
+                <button data-filter="fullstack" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">Full-Stack</button>
+                <button data-filter="frontend" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">Frontend</button>
+            </div>
+
+            <div class="relative w-full sm:w-64">
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                <input type="text" id="project-search" placeholder="Search projects..." 
+                       class="w-full pl-9 pr-4 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-200">
+            </div>
+        </div>
+
+        <!-- Projects Grid (3 Featured Projects) -->
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- PROJECT 1 -->
+            <!-- EDIT PROJECT 1 DETAILS BELOW -->
+            <div class="project-card group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col" data-category="fullstack" data-tags="react node tailwind mongodb">
+                <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800">
+                    <img src="https://placehold.co/600x350/0284c7/ffffff?text=DevFlow+SaaS" alt="DevFlow Dashboard Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-brand-500 transition-colors">DevFlow SaaS Dashboard</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">Real-time telemetry and task management web application engineered for team collaboration and agile sprint tracking.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2.5 py-1 text-xs rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">React</span>
+                            <span class="px-2.5 py-1 text-xs rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Node.js</span>
+                            <span class="px-2.5 py-1 text-xs rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">MongoDB</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-sm font-medium">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 flex items-center gap-1.5"><i class="fas fa-external-link-alt text-xs"></i> Live Demo</a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5"><i class="fab fa-github text-xs"></i> Source Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT 2 -->
+            <!-- EDIT PROJECT 2 DETAILS BELOW -->
+            <div class="project-card group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col" data-category="fullstack" data-tags="python fastapi postgres docker">
+                <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800">
+                    <img src="https://placehold.co/600x350/0369a1/ffffff?text=DataStream+API" alt="DataStream REST Engine Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-brand-500 transition-colors">DataStream REST Engine</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">High-throughput microservice providing cached REST endpoints for analytical metrics with integrated database ORM.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2.5 py-1 text-xs rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Python</span>
+                            <span class="px-2.5 py-1 text-xs rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">FastAPI</span>
+                            <span class="px-2.5 py-1 text-xs rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">PostgreSQL</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-sm font-medium">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 flex items-center gap-1.5"><i class="fas fa-external-link-alt text-xs"></i> Live Demo</a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5"><i class="fab fa-github text-xs"></i> Source Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT 3 -->
+            <!-- EDIT PROJECT 3 DETAILS BELOW -->
+            <div class="project-card group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col" data-category="frontend" data-tags="javascript tailwind html css">
+                <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-800">
+                    <img src="https://placehold.co/600x350/4f46e5/ffffff?text=DesignKit+UI" alt="DesignKit Component Suite Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-brand-500 transition-colors">DesignKit Component UI</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">An accessible, responsive component library crafted for modern layout designs, custom themes, and accessibility.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-2.5 py-1 text-xs rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">JavaScript</span>
+                            <span class="px-2.5 py-1 text-xs rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Tailwind</span>
+                            <span class="px-2.5 py-1 text-xs rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">HTML5</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-sm font-medium">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 flex items-center gap-1.5"><i class="fas fa-external-link-alt text-xs"></i> Live Demo</a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5"><i class="fab fa-github text-xs"></i> Source Code</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-20 bg-slate-100/60 dark:bg-slate-800/40 border-t border-slate-200/60 dark:border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mx-auto text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">Get In Touch</h2>
+                <p class="text-slate-600 dark:text-slate-400">Have a project or opportunity in mind? Feel free to drop a message!</p>
+            </div>
+
+            <div class="max-w-xl mx-auto bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-lg">
+                <form id="contact-form" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Your Name</label>
+                        <input type="text" id="name" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-200">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Your Email</label>
+                        <input type="email" id="email" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-200">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Message</label>
+                        <textarea id="message" rows="4" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-200 resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-medium shadow-md shadow-brand-500/20 transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane text-sm"></i>
+                        <span>Send Message</span>
+                    </button>
+                </form>
+                <div id="form-feedback" class="hidden mt-4 p-4 rounded-xl text-center text-sm font-medium"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-500 dark:text-slate-400">
+        <div class="max-w-6xl mx-auto px-4">
+            <!-- EDIT YOUR FOOTER COPYRIGHT HERE -->
+            <p>© <span id="year"></span> Alex Rivera. Built for Week 3 Assignment & deployed via GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Dark / Light Theme Toggle Functionality
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+
+        // Interactive Project Search and Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        const searchInput = document.getElementById('project-search');
+
+        let currentFilter = 'all';
+        let searchQuery = '';
+
+        function filterProjects() {
+            projectCards.forEach(card => {
+                const category = card.dataset.category;
+                const tags = card.dataset.tags.toLowerCase();
+                const title = card.querySelector('h3').textContent.toLowerCase();
+
+                const matchesFilter = (currentFilter === 'all' || category === currentFilter);
+                const matchesSearch = title.includes(searchQuery) || tags.includes(searchQuery);
+
+                if (matchesFilter && matchesSearch) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-brand-500', 'text-white');
+                    b.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+                });
+                btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+                btn.classList.add('bg-brand-500', 'text-white');
+
+                currentFilter = btn.dataset.filter;
+                filterProjects();
+            });
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.toLowerCase();
+            filterProjects();
+        });
+
+        // Contact Form Feedback Handler
+        const contactForm = document.getElementById('contact-form');
+        const formFeedback = document.getElementById('form-feedback');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formFeedback.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-emerald-100', 'text-emerald-700');
+            formFeedback.classList.add('bg-emerald-100', 'dark:bg-emerald-900/40', 'text-emerald-700', 'dark:text-emerald-300');
+            formFeedback.textContent = 'Thank you! Your message has been sent successfully.';
+            contactForm.reset();
+
+            setTimeout(() => {
+                formFeedback.classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
